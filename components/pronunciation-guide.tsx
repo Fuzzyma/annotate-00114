@@ -18,7 +18,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useToast } from "@/hooks/use-toast";
 import { useAudioRecorder } from "@/hooks/use-audio-recorder";
 import { AudioWaveform } from "@/components/audio-waveform";
 import { PhoneticSymbol } from "@/components/phonetic-symbol";

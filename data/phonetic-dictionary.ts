@@ -2,8 +2,8 @@
 export const phoneticDictionary: Record<
   string,
   {
-    explanation: string
-    examples: Record<string, string[]> // Language code -> examples
+    explanation: string;
+    examples: Record<string, string[]>; // Language code -> examples
   }
 > = {
   // Vowels
@@ -151,7 +151,8 @@ export const phoneticDictionary: Record<
     },
   },
   eɪ: {
-    explanation: "Diphthong - close-mid front unrounded to close front unrounded",
+    explanation:
+      "Diphthong - close-mid front unrounded to close front unrounded",
     examples: {
       en: ["day", "say"],
     },
@@ -376,12 +377,6 @@ export const phoneticDictionary: Record<
       es: ["llamar", "llover"],
     },
   },
-  θ: {
-    explanation: "Voiceless dental fricative",
-    examples: {
-      es: ["cinco", "hacer"],
-    },
-  },
 
   // Mandarin specific
   ǐ: {
@@ -438,21 +433,23 @@ export const phoneticDictionary: Record<
       en: ["re.act", "co.op"],
     },
   },
-}
+};
 
 // Helper function to get phonetic symbol information
 export function getPhoneticInfo(symbol: string, languageCode = "en") {
   // Try to find the exact symbol
-  let info = phoneticDictionary[symbol]
+  let info = phoneticDictionary[symbol];
 
   // If not found, try to find a compound symbol that contains this symbol
   if (!info) {
     // Look for compound symbols that might contain this symbol
-    const possibleCompounds = Object.keys(phoneticDictionary).filter((key) => key.length > 1 && key.includes(symbol))
+    const possibleCompounds = Object.keys(phoneticDictionary).filter(
+      (key) => key.length > 1 && key.includes(symbol)
+    );
 
     if (possibleCompounds.length > 0) {
       // Use the first compound symbol that contains our symbol
-      info = phoneticDictionary[possibleCompounds[0]]
+      info = phoneticDictionary[possibleCompounds[0]];
     }
   }
 
@@ -461,15 +458,14 @@ export function getPhoneticInfo(symbol: string, languageCode = "en") {
     return {
       explanation: `Phonetic symbol: ${symbol}`,
       examples: [],
-    }
+    };
   }
 
   // Get examples for the current language, or fall back to English examples
-  const examples = info.examples[languageCode] || info.examples.en || []
+  const examples = info.examples[languageCode] || info.examples.en || [];
 
   return {
     explanation: info.explanation,
     examples,
-  }
+  };
 }
-

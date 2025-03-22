@@ -9,7 +9,7 @@ import {
   forwardRef,
   useImperativeHandle,
 } from "react";
-import { useToast } from "./ui/use-toast";
+import { toast } from "sonner";
 
 interface AudioWaveformProps {
   audioUrl: string;
@@ -42,8 +42,6 @@ export const AudioWaveform = forwardRef(function AudioWaveform(
   const [waveformData, setWaveformData] = useState<number[]>([]);
   const [canvasWidth, setCanvasWidth] = useState(1000);
 
-  const { toast } = useToast();
-
   const updateProgress = () => {
     if (audioRef.current) {
       setCurrentTime(audioRef.current.currentTime);
@@ -60,8 +58,7 @@ export const AudioWaveform = forwardRef(function AudioWaveform(
         })
         .catch((error) => {
           console.error("Error playing audio:", error);
-          toast({
-            title: "Error playing audio",
+          toast("Error playing audio", {
             description: "Sorry, but it seems something is wrong.",
           });
           onPlayPause?.(false);

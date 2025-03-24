@@ -281,12 +281,12 @@ export function PronunciationGuide() {
             )}
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex gap-2 flex-wrap">
             <Button
               onClick={handleRecordButtonClick}
               variant={isRecording ? "destructive" : "default"}
               size="lg"
-              className="gap-2"
+              className="gap-2 grow sm:grow-0"
             >
               {isRecording ? (
                 <>
@@ -306,7 +306,7 @@ export function PronunciationGuide() {
                 onClick={resetRecording}
                 variant="outline"
                 size="lg"
-                className="gap-2"
+                className="gap-2 grow sm:grow-0"
               >
                 <RefreshCw className="h-4 w-4" />
                 Reset
